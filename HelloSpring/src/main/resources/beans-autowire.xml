@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <bean id="address" class="com.autowire.Address">
+        <property name="city" value="beijing"></property>
+        <property name="street" value="wangfujing"></property>
+    </bean>
+    <bean id="car" class="com.autowire.Car">
+        <property name="brand" value="Audi"></property>
+        <property name="price" value="300000"></property>
+    </bean>
+    <!--
+    可以使用autowire属性指定自动装配的方式，
+    byName：根据bean的名字和当前bean的setter风格的属性名进行自动装配，
+    若有匹配的，则进行自动装配，若没有匹配的，咋不装配
+    byType 根据bean的类型和当前bean的属性的类型进行装配。若IOC容器中有1个以上的类型匹配的bean,
+    则抛出异常
+    -->
+    <bean id="person" class="com.autowire.Person" autowire="byType">
+        <property name="name" value="Tom"></property>
+        <!--<property name="adresss" ref="address"></property>-->
+        <!--<property name="car" ref="car"></property>-->
+    </bean>
+</beans>
